@@ -1,4 +1,4 @@
-import { compile } from "./src/compile.ts";
+import Instance from "./src/compile.ts";
 import { Command } from "https://deno.land/x/cliffy@v0.25.7/command/mod.ts";
 
 await new Command()
@@ -11,11 +11,17 @@ await new Command()
     "output location of the exacutable",
   )
   .action(async ({ output }, source: string) => {
-    await compile(source, [
+    const instance = new Instance(source);
+
+    await instance.compile([
       "--unstable",
       "--allow-env",
       "--allow-ffi",
       "--allow-write",
-    ], typeof output === "string" ? output : undefined);
+    ]);
+    await instance.windowify();
+    if (typeof output === "string") {
+      instance.rename(output);
+    }
   })
   .parse(Deno.args);

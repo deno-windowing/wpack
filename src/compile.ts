@@ -1,18 +1,17 @@
 import { Platform } from "../types.ts";
-import * as win from "./win.ts";
+import { Win } from "./win.ts";
 
-let platform: Platform;
+let platform: {
+  new (file: string):Platform;
+};
 
 switch (Deno.build.os) {
   case "windows":
-    platform = win;
+    platform = Win;
     break;
   default:
     throw new Error(`Unsupported platform: ${Deno.build.os}`);
 }
 
-const {
-  compile,
-} = platform;
 
-export { compile };
+export default platform;
