@@ -2,7 +2,7 @@ import { Platform } from "../types.ts";
 import { Win } from "./win.ts";
 
 let platform: {
-  new (file: string):Platform;
+  new (file: string): Platform;
 };
 
 switch (Deno.build.os) {
@@ -12,6 +12,5 @@ switch (Deno.build.os) {
   default:
     throw new Error(`Unsupported platform: ${Deno.build.os}`);
 }
-
 
 export default platform;

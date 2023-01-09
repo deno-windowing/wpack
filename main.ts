@@ -2,9 +2,9 @@ import Instance from "./src/compile.ts";
 import { Command } from "https://deno.land/x/cliffy@v0.25.7/command/mod.ts";
 
 await new Command()
-  .name("dwm-pack")
+  .name("wpack")
   .version("0.1.0")
-  .description("pack dwm")
+  .description("Application packager dwm")
   .command("compile <source:string>", "compiles a dwm application")
   .option(
     "-o, --output [PATH_OF_FILE:string]",
