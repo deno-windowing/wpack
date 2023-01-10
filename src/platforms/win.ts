@@ -1,7 +1,7 @@
 // based on https://github.com/astrodon/astrodon/issues/10
 import * as path from "https://deno.land/std@0.170.0/path/mod.ts";
-import { Platform } from "../types.ts";
-import { readN, view, writeAll } from "./util.ts";
+import { Platform } from "../../types.ts";
+import { readN, view, writeAll } from ".././util.ts";
 
 export class Win implements Platform {
   #parsedPath: path.ParsedPath;

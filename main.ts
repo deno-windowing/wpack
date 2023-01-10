@@ -1,4 +1,4 @@
-import Instance from "./src/compile.ts";
+import Instance from "./src/platform.ts";
 import { Command } from "https://deno.land/x/cliffy@v0.25.7/command/mod.ts";
 
 await new Command()
