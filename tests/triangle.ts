@@ -2,8 +2,8 @@ import {
   createWindow,
   getProcAddress,
   mainloop,
-} from "https://deno.land/x/dwm@0.1.0/mod.ts";
-import * as gl from "https://deno.land/x/gluten@0.1.0/api/gles23.2.ts";
+} from "https://deno.land/x/dwm@0.3.0/mod.ts";
+import * as gl from "https://deno.land/x/gluten@0.1.3/api/gles23.2.ts";
 
 const window = createWindow({
   title: "DenoGL",
