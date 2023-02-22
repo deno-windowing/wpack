@@ -1,6 +1,6 @@
 import * as path from "https://deno.land/std@0.170.0/path/mod.ts";
 import { Platform } from "../../types.ts";
-import { yellow } from "https://deno.land/std@0.170.0/fmt/colors.ts";
+
 export class Mac implements Platform {
   #parsedPath: path.ParsedPath;
   #filePath: string;
@@ -24,12 +24,28 @@ export class Mac implements Platform {
     const child = command.spawn();
     const _status = await child.status;
   }
-  // deno-lint-ignore require-await
+
   async windowify() {
-    console.warn(yellow("Windowify is not available on this platform"));
+    const parsedPath = path.parse(this.#file);
+    await Deno.mkdir(parsedPath.name + ".app", { recursive: true });
+    await Deno.rename(
+      this.#filePath,
+      path.join(parsedPath.name + ".app", this.#parsedPath.name),
+    );
   }
 
-  rename(dest: string) {
-    Deno.rename(this.#filePath, dest);
+  async rename(dest: string) {
+    try {
+      await Deno.remove(dest + ".app", { recursive: true });
+    } catch {
+      // no op
+    }
+
+    const parsedPath = path.parse(this.#file);
+    await Deno.rename(
+      path.join(parsedPath.name + ".app", this.#parsedPath.name),
+      path.join(parsedPath.name + ".app", dest),
+    );
+    await Deno.rename(this.#filePath + ".app", dest + ".app");
   }
 }
