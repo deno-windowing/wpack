@@ -1,5 +1,12 @@
-import { getPrimaryMonitor, mainloop, WindowCanvas } from "https://raw.githubusercontent.com/deno-windowing/dwm/main/ext/canvas.ts";
-import { applyDark, applyMicaAlt } from "https://raw.githubusercontent.com/deno-windowing/dwm/main/ext/styles/mod.ts";
+import {
+  getPrimaryMonitor,
+  mainloop,
+  WindowCanvas,
+} from "https://raw.githubusercontent.com/deno-windowing/dwm/main/ext/canvas.ts";
+import {
+  applyDark,
+  applyMicaAlt,
+} from "https://raw.githubusercontent.com/deno-windowing/dwm/main/ext/styles/mod.ts";
 
 const monitor = getPrimaryMonitor();
 
