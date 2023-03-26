@@ -12,7 +12,7 @@ Since this module depends on unstable FFI API, you need to pass `--unstable`
 along with `--allow-ffi`, `--allow-write` and `--allow-env`.
 
 ```sh
-deno install --unstable --allow-ffi --allow-write --allow-env https://raw.githubusercontent.com/deno-windowing/wpack/main/main.ts -n wpack
+deno install --unstable --allow-ffi --allow-write --allow-env -n wpack https://raw.githubusercontent.com/deno-windowing/wpack/main/main.ts
 ```
 
 ```sh
